@@ -1,8 +1,16 @@
 import './App.css';
 
+import { Switch, Route } from 'react-router';
+
+import IndexPage from './pages/IndexPage/IndexPage';
+import CoursesPage from './pages/CoursesPage/CoursesPage';
+
 function App() {
   return (
-    <h1>Hello!</h1>
+    <Switch>
+      <Route path = '/' exact render = { () => <IndexPage/> } />
+      <Route path = '/courses' render = { () => <CoursesPage/> } />
+    </Switch>
   );
 }
 
