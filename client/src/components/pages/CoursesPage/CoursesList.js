@@ -1,6 +1,9 @@
 import { Component } from "react";
 import CoursesService from "../../../services/courses.services";
 
+import { Row } from 'react-bootstrap'
+import CourseCard from "./CourseCard";
+
 class CoursesList extends Component{
 
     constructor(){
@@ -11,11 +14,15 @@ class CoursesList extends Component{
         this.coursesService = new CoursesService()
     }
 
-    componentDidMount = () => {
+    loadCourses = () => {
         this.coursesService
             .getAllCourses()
             .then( res => this.setState({courses: res.data}))
             .catch( err => console.log(err))
+    }
+
+    componentDidMount = () => {
+        this.loadCourses()
     }
 
     render(){
@@ -24,7 +31,10 @@ class CoursesList extends Component{
             ?
             <h1>waiting...</h1>
             :
-            this.state.courses?.map( elm => <p key={ elm._id }>{elm.name}</p>)
+            <Row>
+                {this.state.courses?.map( elm => <CourseCard key = {elm._id} {...elm}/>)}
+            </Row>
+            
         )
     }
 }

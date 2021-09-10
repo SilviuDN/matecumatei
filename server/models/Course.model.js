@@ -27,6 +27,14 @@ const courseSchema = new Schema({
   reviews: [{
       type: Number, 
   }],
+  price: {
+    type: Number,
+    // unique: true -> Ideally, should be unique, but its up to you
+  },
+  discountedPrice: {
+    type: Number,
+    // unique: true -> Ideally, should be unique, but its up to you
+  },
 },
 {
     timestamps: true
