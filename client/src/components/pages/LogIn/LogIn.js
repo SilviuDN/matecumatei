@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import AuthService from '../../../services/auth.services'
 
-class Signup extends Component {
+class LogIn extends Component {
 
     constructor() {
         super()
@@ -29,10 +29,14 @@ class Signup extends Component {
         const { email, pwd } = this.state
 
         this.authService
-            .signup(email, pwd)
-            .then(() => this.props.history.push('/logIn'))          // Redirect with props
+            .login(email, pwd)
+            .then(loggedUserfromServer => {
+                this.props.storeUser(loggedUserfromServer.data)
+                this.props.history.push('/courses')         // Redirect with RRD props
+            })
             .catch(err => console.log(err))
     }
+
 
 
     render() {
@@ -44,14 +48,14 @@ class Signup extends Component {
 
                     <Col md={{ span: 4, offset: 4 }}>
 
-                        <h1>Sign Up</h1>
+                        <h1>Log In</h1>
 
                         <hr></hr>
 
                         <Form onSubmit={this.handleFormSubmit}>
 
                             <Form.Group controlId="email">
-                                <Form.Label>email</Form.Label>
+                                <Form.Label>Email</Form.Label>
                                 <Form.Control type="text" value={this.state.email} onChange={this.handleInputChange} name="email" />
                             </Form.Group>
 
@@ -60,7 +64,7 @@ class Signup extends Component {
                                 <Form.Control type="password" value={this.state.pwd} onChange={this.handleInputChange} name="pwd" />
                             </Form.Group>
 
-                            <Button style={{ marginTop: '20px', width: '100%' }} variant="dark" type="submit">Sign Up</Button>
+                            <Button style={{ marginTop: '20px', width: '100%' }} variant="dark" type="submit">Log In</Button>
 
                         </Form>
 
@@ -80,4 +84,4 @@ class Signup extends Component {
 }
 
 
-export default Signup
+export default LogIn
