@@ -31,24 +31,24 @@ class CourseDetails extends Component{
             <h4>waiting...</h4>
             :
             <Row className="justify-content-around">
-            <Col md={6}>
-                <h1>{this.state.course.name}</h1>
-                <p>{this.state.course.description}</p>
+                <Col md={6}>
+                    <h1>{this.state.course.name}</h1>
+                    <p>{this.state.course.description}</p>
 
-                <hr></hr>
+                    <hr></hr>
 
-                <p>Pret: <s> {this.state.course.price}$  </s> <strong style={{ color : 'red' }}>  {this.state.course.discountedPrice}$ </strong></p>
+                    <p>Pret: <s> {this.state.course.price}$  </s> <strong style={{ color : 'red' }}>  {this.state.course.discountedPrice}$ </strong></p>
 
-                <hr></hr>
+                    <hr></hr>
 
-                <Link to="/courses" className="btn btn-dark">Lista de cursuri</Link>
+                    <Link to="/courses" className="btn btn-dark">Lista de cursuri</Link>
 
-            </Col>
+                </Col>
 
-            <Col md={4}>
-                <img src={this.state.course.image} alt={this.state.course.name} style={{ width: '100%' }} />
-            </Col>
-        </Row>
+                <Col md={4}>
+                    <img src={this.state.course.image} alt={this.state.course.name} style={{ width: '100%' }} />
+                </Col>
+            </Row>
         )
     }
 

@@ -1,10 +1,12 @@
-import { Component, useState } from 'react'
+import { Component } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import CoursesService from '../../../services/courses.services'
 
-const CourseForm = () =>  {
+class CourseForm extends Component {
 
-    const [courseInput, setCourseInput] = useState({
+    constructor() {
+        super()
+        this.state = {
             name: '',
             description: '',
             typeOfCourse: '',
@@ -12,28 +14,26 @@ const CourseForm = () =>  {
             price: '',
             discountedPrice: '',
             image: ''
-    })
-
-    const coursesService = new CoursesService()
-
-    const handleInputChange = e => {
-        const { name, value } = e.target
-        setCourseInput({
-            ...courseInput,
-            [name]: value
-        })
+        }
+        this.coursesService = new CoursesService()
     }
 
 
-    const handleFormSubmit = e => {
+    handleInputChange = e => {
+        const { name, value } = e.target
+        this.setState({ [name]: value })
+    }
+
+
+    handleFormSubmit = e => {
         e.preventDefault()
 
-        coursesService
-            .saveCourse(courseInput)
+        this.coursesService
+            .saveCourse(this.state)
             .then(() => {
                 // this.props.closeModal()
                 // this.props.refreshCoasters()
-                setCourseInput({
+                this.setState({             
                     name: '',
                     description: '',
                     typeOfCourse: '',
@@ -47,45 +47,45 @@ const CourseForm = () =>  {
             .catch(err => console.log(err))
     }
 
-
+    render() {
         return (
             <Container>
 
-                <Form onSubmit={handleFormSubmit}>
+                <Form onSubmit={this.handleFormSubmit}>
 
                     <Form.Group controlId="name">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" value={courseInput.name} onChange={handleInputChange} name="name" />
+                        <Form.Control type="text" value={this.state.name} onChange={this.handleInputChange} name="name" />
                     </Form.Group>
 
                     <Form.Group controlId="desc">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control type="text" value={courseInput.description} onChange={handleInputChange} name="description" />
+                        <Form.Control type="text" value={this.state.description} onChange={this.handleInputChange} name="description" />
                     </Form.Group>
 
                     <Form.Group controlId="inve">
                         <Form.Label>Type</Form.Label>
-                        <Form.Control type="text" value={courseInput.typeOfCourse} onChange={handleInputChange} name="typeOfCourse" />
+                        <Form.Control type="text" value={this.state.typeOfCourse} onChange={this.handleInputChange} name="typeOfCourse" />
                     </Form.Group>
 
                     <Form.Group controlId="lng">
                         <Form.Label>Position</Form.Label>
-                        <Form.Control type="text" value={courseInput.position} onChange={handleInputChange} name="position" />
+                        <Form.Control type="text" value={this.state.position} onChange={this.handleInputChange} name="position" />
                     </Form.Group>
 
                     <Form.Group controlId="lng">
                         <Form.Label>Price</Form.Label>
-                        <Form.Control type="text" value={courseInput.price} onChange={handleInputChange} name="price" />
+                        <Form.Control type="text" value={this.state.price} onChange={this.handleInputChange} name="price" />
                     </Form.Group>
 
                     <Form.Group controlId="lng">
                         <Form.Label>Discounted Price</Form.Label>
-                        <Form.Control type="text" value={courseInput.discountedPrice} onChange={handleInputChange} name="discountedPrice" />
+                        <Form.Control type="text" value={this.state.discountedPrice} onChange={this.handleInputChange} name="discountedPrice" />
                     </Form.Group>
 
                     <Form.Group controlId="lng">
                         <Form.Label>Imagen (URL)</Form.Label>
-                        <Form.Control type="text" value={courseInput.image} onChange={handleInputChange} name="image" />
+                        <Form.Control type="text" value={this.state.image} onChange={this.handleInputChange} name="image" />
                     </Form.Group>
 
                     <Button style={{ marginTop: '20px', width: '100%' }} variant="dark" type="submit">Create course</Button>
@@ -94,7 +94,7 @@ const CourseForm = () =>  {
 
             </Container>
         )
-
+    }
 }
 
 export default CourseForm
