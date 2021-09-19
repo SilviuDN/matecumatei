@@ -1,7 +1,8 @@
 import { Component } from "react";
 import CoursesService from "../../../services/courses.services";
+import LecturesList from "../LecturePage/LecturesList";
 
-import {Container, Row, Col, Button} from 'react-bootstrap'
+import { Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 class CourseDetails extends Component{
@@ -9,7 +10,8 @@ class CourseDetails extends Component{
     constructor(){
         super()
         this.state = {
-            course: undefined
+            course: undefined,
+            showClasses: false,
         }
         this.courseService = new CoursesService()
     }
@@ -22,6 +24,11 @@ class CourseDetails extends Component{
             .catch( err => console.log(err))
     }
 
+    toggleShowClasses = () => {
+        this.setState({showClasses: !this.state.showClasses})
+    }
+
+
     render(){
 
 
@@ -30,6 +37,7 @@ class CourseDetails extends Component{
             ?
             <h4>waiting...</h4>
             :
+            <>
             <Row className="justify-content-around">
                 <Col md={6}>
                     <h1>{this.state.course.name}</h1>
@@ -37,11 +45,15 @@ class CourseDetails extends Component{
 
                     <hr></hr>
 
-                    <p>Pret: <s> {this.state.course.price}$  </s> <strong style={{ color : 'red' }}>  {this.state.course.discountedPrice}$ </strong></p>
+                    {/* <p>Pret: <s> {this.state.course.price}$  </s> <strong style={{ color : 'red' }}>  {this.state.course.discountedPrice}$ </strong></p>
 
-                    <hr></hr>
+                    <hr></hr> */}
 
+                    
                     <Link to="/courses" className="btn btn-dark">Lista de cursuri</Link>
+                    <button className="btn btn-dark" onClick={this.toggleShowClasses} style={{ marginLeft: '20px' }}>
+                        {this.state.showClasses ? 'Ascunde cuprins' : 'Arata cuprins'}                        
+                    </button>
 
                 </Col>
 
@@ -49,6 +61,15 @@ class CourseDetails extends Component{
                     <img src={this.state.course.image} alt={this.state.course.name} style={{ width: '100%' }} />
                 </Col>
             </Row>
+
+                    {
+                        this.state.showClasses && <LecturesList courseId={this.state.course._id} lectures={this.state.course.lectures}/>
+                    }
+
+
+            
+            </>
+
         )
     }
 

@@ -2,7 +2,7 @@ import { Component, useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import CoursesService from '../../../services/courses.services'
 
-const CourseForm = () =>  {
+const CourseForm = (props) =>  {
 
     const [courseInput, setCourseInput] = useState({
             name: '',
@@ -18,10 +18,24 @@ const CourseForm = () =>  {
 
     const handleInputChange = e => {
         const { name, value } = e.target
-        setCourseInput({
-            ...courseInput,
-            [name]: value
-        })
+
+        // React SCHEDULES state updates, does not perform them instantly ==> if more updates scheduled, wrong state might be used
+        // INSTEAD OF:
+
+        // setCourseInput({
+        //     ...courseInput,
+        //     [name]: value
+        // })
+
+        // WE USE:
+
+        setCourseInput((prevCourseInput) => {
+            return { ...prevCourseInput, [name]: value }
+        } )
+
+        // and React GUARANTEES the latest state will be used
+
+        // IF STATE UPDATE DEPENDS ON THE PREVIOUS STATE, USE THE ARROW FUNCTION
     }
 
 

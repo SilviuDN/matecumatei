@@ -3,17 +3,27 @@ import CoursesList from './CoursesList'
 
 import { Link } from 'react-router-dom'
 
-const CoastersPage = () => {
+const CoursesPage = ({loggedUser}) => {
+
+    // console.log(loggedUser.role)
 
     return(
         <Container>
             <h1>Courses list goes here</h1>
             <CoursesList/>
-            <Link to={`/courses/new`}>
-                <Button className="btnBlock">New Course</Button>
-            </Link>
+            {
+                loggedUser?.role==='admin'
+                ?
+                <Link to={`/courses/new`}>
+                    <Button className="btnBlock">New Course</Button>
+                </Link>
+                :
+                null
+            }
+
+            <p style={{marginBottom: '3rem'}}></p>
         </Container>
     )
 }
 
-export default CoastersPage
+export default CoursesPage

@@ -19,6 +19,7 @@ router.get('/:course_id', (req, res) => {
 
     Course
         .findById(req.params.course_id)
+        .populate('lectures')
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching courses', err }))
 })

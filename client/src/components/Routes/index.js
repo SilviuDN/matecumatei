@@ -13,7 +13,7 @@ const Routes = ({ storeUser, loggedUser }) => {
         <>
             <Switch>
                 <Route path = '/' exact render = { () => <IndexPage/> } />
-                <Route path = '/courses' exact render = { () => <CoursesPage /> } />
+                <Route path = '/courses' exact render = { () => <CoursesPage loggedUser={loggedUser}/> } />
                 <Route path = '/courses/details/:course_id' render = { props => <CourseDetails {...props}/> } />
                 <Route path = '/courses/new' render = { (props) => <CourseForm {...props}/> } />
                 <Route path = '/signUp' render = { (props) => <Signup {...props} /> } />

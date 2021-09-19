@@ -1,11 +1,19 @@
 const { Schema, model } = require("mongoose");
 
-const lectureSchema = new Schema({
+const lectureSchema = new Schema({  
+  sectionNumber: {
+    type: Number,
+    // unique: true -> Ideally, should be unique, but its up to you
+  },  
+  lectureNumber: {
+    type: Number,
+    // unique: true -> Ideally, should be unique, but its up to you
+  },
   name: {
     type: String,
     // unique: true -> Ideally, should be unique, but its up to you
   },
-  typeOflecture: {
+  typeOfLecture: {
     type: String,
     enum: ['video', 'written', 'OTHER'],
   },
@@ -13,7 +21,7 @@ const lectureSchema = new Schema({
     type: String,
     // unique: true -> Ideally, should be unique, but its up to you
   },
-  image: {
+  videoUrl: {
     type: String,
     // unique: true -> Ideally, should be unique, but its up to you
   },

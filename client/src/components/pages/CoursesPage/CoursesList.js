@@ -26,14 +26,20 @@ class CoursesList extends Component{
     }
 
     render(){
-        return(
-            !this.state.courses
+
+        const coursesList =             !this.state.courses
             ?
             <h1>waiting...</h1>
             :
             <Row>
                 {this.state.courses?.map( elm => <CourseCard key = {elm._id} {...elm}/>)}
             </Row>
+
+        return(
+            <>
+                {coursesList}
+            </>
+            
             
         )
     }

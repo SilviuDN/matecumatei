@@ -16,9 +16,6 @@ const CourseCard = ({name, description, image, _id, reviews}) => {
                     <Button className="btnBlock">Detalii</Button>
                 </Link>
             </article>
-
-
-
         </Col>
     )
 
