@@ -27,7 +27,7 @@ class CoursesList extends Component{
 
     render(){
 
-        const coursesList =             !this.state.courses
+        const coursesList = !this.state.courses
             ?
             <h1>waiting...</h1>
             :

@@ -1,6 +1,7 @@
 import {useState} from 'react'
-import { Col, Row} from "react-bootstrap";
-import LectureModal from './LectureModal';
+import { Col, Row, Container} from "react-bootstrap"
+import LectureModal from './LectureModal'
+import classes from './LecturePage.module.css';
 
 
 const LectureCard = ({lecture}) => {
@@ -15,7 +16,20 @@ const LectureCard = ({lecture}) => {
     return(
 
             <article className="courseCard">
-                <Row className="justify-content-around">
+                <Container className={classes.container}>
+                    <div className={classes.block}>
+                        <h5 style={{ marginBottom: '0px'}}>{lecture.sectionNumber}.{lecture.lectureNumber} - {lecture.name}</h5 >
+                    </div>
+                    
+                    <div>
+                       <button className="btn btn-dark" onClick={toggleShowLecture}>
+                            {showLecture ? 'Ascunde lectia' : 'Arata lectia'}                        
+                        </button>                    
+                    </div>
+
+                </Container>
+
+                {/* <Row className="justify-content-around align-center">
                     <Col md={6}>
                         <h4>{lecture.sectionNumber}.{lecture.lectureNumber} - {lecture.name}</h4>
                     </Col>
@@ -24,7 +38,7 @@ const LectureCard = ({lecture}) => {
                             {showLecture ? 'Ascunde lectia' : 'Arata lectia'}                        
                         </button>
                     </Col>
-                </Row>
+                </Row> */}
 
                 {
                     showLecture
