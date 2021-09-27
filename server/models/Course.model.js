@@ -21,6 +21,9 @@ const courseSchema = new Schema({
     type: Number,
     // unique: true -> Ideally, should be unique, but its up to you
   },
+  sections: [{
+      type: Schema.Types.ObjectId, ref: 'Section'
+  }],
   lectures: [{
       type: Schema.Types.ObjectId, ref: 'Lecture'
   }],

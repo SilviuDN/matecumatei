@@ -1,6 +1,6 @@
 import { Component } from "react";
 import CoursesService from "../../../services/courses.services";
-import LecturesList from "../LecturePage/LecturesList";
+import SectionsList from "../SectionPage/SectionsList";
 
 import { Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
@@ -63,7 +63,11 @@ class CourseDetails extends Component{
             </Row>
 
                     {
-                        this.state.showClasses && <LecturesList courseId={this.state.course._id} lectures={this.state.course.lectures}/>
+                        // this.state.showClasses && <LecturesList courseId={this.state.course._id} lectures={this.state.course.lectures}/>
+                    }
+                    {
+
+                        this.state.showClasses && <SectionsList courseId={this.state.course._id} sections={this.state.course?.sections}  loggedUser={this.props.loggedUser}/>
                     }
 
 

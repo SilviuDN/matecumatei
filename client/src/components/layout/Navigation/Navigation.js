@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import AuthService from '../../../services/auth.services'
@@ -24,7 +24,7 @@ const Navigation = ({ storeUser , loggedUser}) => {
                     <Link className="nav-link" to="/">Home</Link>
                     <Link className="nav-link" to="/courses">Courses</Link>
 
-                    {loggedUser && ( loggedUser.role == 'admin' || loggedUser.role === 'superUser' )
+                    {loggedUser && ( loggedUser.role === 'admin' || loggedUser.role === 'superUser' )
                     ?
                     <Link className="nav-link" to="/courses/new">NewCourse</Link>
                     :

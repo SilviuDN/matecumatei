@@ -1,15 +1,11 @@
-import { Component } from "react";
-import LecturesService from "../../../services/lectures.services";
 import LectureCard from "./LectureCard";
 
-import { Row } from 'react-bootstrap'
-
-const LecturesList = ({lectures}) => {
+const LecturesList = ({lectures, loggedUser}) => {
 
     return(
         // <h1>LecturesList</h1>
         <>
-        {lectures.map(lecture => <LectureCard lecture = {lecture}/>)}
+        {lectures.map(lecture => <LectureCard lecture = {lecture}  loggedUser={loggedUser}/>)}
         
         </>
     )
