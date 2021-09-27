@@ -16,6 +16,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "start": "REACT_APP_BASE_URL=http://localhost:5000/api react-scripts start",
+    "build": "REACT_APP_BASE_URL=https://git.heroku.com/matecumatei.git/api react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

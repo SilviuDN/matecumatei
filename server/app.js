@@ -17,4 +17,7 @@ require("./config/session.config")(app)
 // 👇 Start handling routes here
 require("./routes")(app);
 
+
+app.use((req, res) => res.sendFile(__dirname + "/public/index.html"))
+
 module.exports = app;
