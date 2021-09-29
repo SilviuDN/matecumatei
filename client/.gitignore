@@ -11,6 +11,9 @@ src/components/pages/CourseForm/classComponents
 # testing
 /coverage
 
+# My testing directory
+/src/components/pages/Tests
+
 # production
 /build
 

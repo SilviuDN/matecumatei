@@ -35,7 +35,7 @@ class CourseDetails extends Component{
         return(
             !this.state.course
             ?
-            <h4>waiting...</h4>
+            <h4>waiting1...</h4>
             :
             <>
             <Row className="justify-content-around">

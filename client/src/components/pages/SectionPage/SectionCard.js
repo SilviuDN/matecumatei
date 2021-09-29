@@ -2,6 +2,7 @@ import { Component } from "react";
 import SectionsService from "../../../services/sections.services";
 import LecturesList from "../LecturePage/LecturesList";
 import classes from './SectionPage.module.css';
+import SectionForm from "../SectionForm/SectionForm";
 
 import { Container} from 'react-bootstrap'
 
@@ -12,11 +13,12 @@ class SectionCard extends Component{
         this.state = {
             section: undefined,
             showClasses: false,
+            newSectionFormIsShown: false,
         }
         this.sectionService = new SectionsService()
     }
 
-    componentDidMount(){
+    loadSeactionsList = () => {
         const {sectionId} = this.props
         this.sectionService
             .getSection(sectionId)
@@ -24,9 +26,19 @@ class SectionCard extends Component{
             .catch( err => console.log(err))
     }
 
+    componentDidMount(){
+        this.loadSeactionsList()
+    }
+
     toggleShowClasses = () => {
         this.setState({showClasses: !this.state.showClasses})
     }
+
+    toggleNewSectionForm = () => {
+        this.setState({newSectionFormIsShown: !this.state.newSectionFormIsShown})
+    }
+
+    componentDidUpdate = (prevProps, prevState) => prevState.newSectionFormIsShown !== this.state.newSectionFormIsShown && this.loadSeactionsList()
 
 
     render(){
@@ -35,7 +47,7 @@ class SectionCard extends Component{
         return(
             !this.state.section
             ?
-            <h4>waiting...</h4>
+            <h4>waiting3...</h4>
             :
             <>
 
@@ -64,14 +76,19 @@ class SectionCard extends Component{
                         this.state.showClasses && this.props.loggedUser?.role === 'admin' &&
                         <div className={classes.block}>
      
-                            <button className="btn btn-dark" >
+                            <button className="btn btn-dark" onClick={this.toggleNewSectionForm}>
                                 Adauga Sectiune                     
                             </button>            
                         </div>
                     }
+                    
+
+                </Container >
+
+                {this.state.newSectionFormIsShown && 
+                <SectionForm courseId={this.props.courseId} hideForm={this.toggleNewSectionForm} renderList={this.props.renderList}/>}
 
 
-                </Container>
 
 
 
