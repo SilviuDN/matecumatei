@@ -4,7 +4,8 @@ import axios from 'axios'
 
     constructor(){
         this.app = axios.create({
-            baseURL: 'http://localhost:5000/api/courses'
+            baseURL: process.env.REACT_APP_BASE_URL + '/courses'
+            // baseURL: 'http://localhost:5000/api/courses'
         })
     }
 
