@@ -4,7 +4,7 @@ import axios from 'axios'
 
     constructor(){
         this.app = axios.create({
-            baseURL: process.env.REACT_APP_BASE_URL + 'sections'
+            baseURL: process.env.REACT_APP_BASE_URL + '/sections'
             // baseURL: 'http://localhost:5000/api/sections'
         })
     }
