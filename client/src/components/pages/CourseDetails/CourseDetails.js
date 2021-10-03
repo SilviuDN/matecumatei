@@ -16,16 +16,31 @@ class CourseDetails extends Component{
         this.courseService = new CoursesService()
     }
 
-    componentDidMount(){
+    loadDetailsPage(){
         const {course_id} = this.props.match.params
         this.courseService
             .getCourse(course_id)
             .then( res => this.setState({course: res.data}))
             .catch( err => console.log(err))
+
+    }
+
+    componentDidMount(){
+        this.loadDetailsPage()
+        // const {course_id} = this.props.match.params
+        // this.courseService
+        //     .getCourse(course_id)
+        //     .then( res => this.setState({course: res.data}))
+        //     .catch( err => console.log(err))
     }
 
     toggleShowClasses = () => {
         this.setState({showClasses: !this.state.showClasses})
+    }
+
+    renderList = () =>{
+        this.loadDetailsPage()
+        // this.setState({showClasses: true})
     }
 
 
@@ -67,7 +82,8 @@ class CourseDetails extends Component{
                     }
                     {
 
-                        this.state.showClasses && <SectionsList courseId={this.state.course._id} sections={this.state.course?.sections}  loggedUser={this.props.loggedUser}/>
+                        this.state.showClasses && <SectionsList courseId={this.state.course._id} sections={this.state.course?.sections}  
+                            loggedUser={this.props.loggedUser} renderList={this.renderList}/>
                     }
 
 

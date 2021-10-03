@@ -43,6 +43,8 @@ class SectionCard extends Component{
 
     render(){
 
+        console.log("role", this.props.loggedUser?.role)
+        console.log(this.state.section?.lectures.length)
 
         return(
             !this.state.section
@@ -62,14 +64,14 @@ class SectionCard extends Component{
                         
                         <div className={classes.block}>
                             <button className="btn btn-dark" onClick={this.toggleShowClasses}>
-                                {this.state.showClasses ? 'Ascunde lectiile' : 'Arata lectiile'}                        
+                                {this.state.showClasses ? 'Ascunde lectiile' : `Arata ${this.state.section?.lectures.length} lectii`}                        
                             </button>                    
                         </div>
                     </div>
 
 
                     {
-                        this.state.showClasses && 
+                        this.state.showClasses &&  
                         <LecturesList sectionId={this.state.section._id} lectures={this.state.section.lectures}  loggedUser={this.props.loggedUser}/>
                     }
                     {
@@ -86,7 +88,8 @@ class SectionCard extends Component{
                 </Container >
 
                 {this.state.newSectionFormIsShown && 
-                <SectionForm courseId={this.props.courseId} hideForm={this.toggleNewSectionForm} renderList={this.props.renderList}/>}
+                <SectionForm courseId={this.props.courseId} hideForm={this.toggleNewSectionForm} renderList={this.props.renderList}
+                    toggleShowClasses={this.toggleShowClasses}/>}
 
 
 

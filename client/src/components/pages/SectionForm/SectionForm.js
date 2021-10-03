@@ -58,6 +58,7 @@ const SectionForm = (props) =>  {
                 })
 
                 props.hideForm()
+                props.toggleShowClasses()
                 props.renderList()
 
             })
@@ -87,7 +88,7 @@ const SectionForm = (props) =>  {
                         <Form.Control type="text" value={sectionInput.sectionNumber} onChange={handleInputChange} name="sectionNumber" />
                     </Form.Group>
 
-                    <Button style={{ marginTop: '20px', width: '30%', marginLeft:'10%' }} variant="dark" type="submit" onClick={props.hideForm}>Cancel</Button>
+                    <Button style={{ marginTop: '20px', width: '30%', marginLeft:'10%' }} variant="dark" onClick={props.hideForm}>Cancel</Button>
                     <Button style={{ marginTop: '20px', width: '30%', marginLeft:'20%' }} variant="dark" type="submit">Create section</Button>
 
                 </Form>
