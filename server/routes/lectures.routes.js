@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Lecture = require('./../models/Lecture.model')
+const Section = require('./../models/Section.model')
 
 
 // router.get('/', (req, res) => {
@@ -27,12 +28,32 @@ const Lecture = require('./../models/Lecture.model')
 router.post('/new', (req, res) => {
 
     const lecture = req.body
+    console.log(lecture)
+
+    Section
+        .findByIdAndUpdate(lecture.sectionId, { $push: {lectures: lecture._id }}, { new: true })
+        // .findByIdAndUpdate(section, { $push: {sections: new mongoose.Types.ObjectId( section._id ) }}, { new: true })
+        .then( (res) => console.log('We have a new lecture', res))
+        .catch( (err) => console.log(err))
+
 
     Lecture
         .create(lecture)
+        .then(response =>{
+
+            Section
+                .findByIdAndUpdate(lecture.sectionId, { $push: {lectures: response._id }}, { new: true })
+                .then( (res) => console.log('We have a new lecture', res))
+                .catch( (err) => console.log(err))
+            
+            return response
+
+        })
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error saving lectures', err }))
 })
+
+
 
 
 // router.put('/edit/:lecture_id', (req, res) => {

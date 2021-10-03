@@ -3,6 +3,7 @@ import SectionsService from "../../../services/sections.services";
 import LecturesList from "../LecturePage/LecturesList";
 import classes from './SectionPage.module.css';
 import SectionForm from "../SectionForm/SectionForm";
+import LectureForm from "../LectureForm/LectureForm";
 
 import { Container} from 'react-bootstrap'
 
@@ -14,6 +15,7 @@ class SectionCard extends Component{
             section: undefined,
             showClasses: false,
             newSectionFormIsShown: false,
+            newLectureFormIsShown: false,
         }
         this.sectionService = new SectionsService()
     }
@@ -36,6 +38,10 @@ class SectionCard extends Component{
 
     toggleNewSectionForm = () => {
         this.setState({newSectionFormIsShown: !this.state.newSectionFormIsShown})
+    }
+
+    toggleNewLectureForm = () => {
+        this.setState({newLectureFormIsShown: !this.state.newLectureFormIsShown})
     }
 
     componentDidUpdate = (prevProps, prevState) => prevState.newSectionFormIsShown !== this.state.newSectionFormIsShown && this.loadSeactionsList()
@@ -72,7 +78,8 @@ class SectionCard extends Component{
 
                     {
                         this.state.showClasses &&  
-                        <LecturesList sectionId={this.state.section._id} lectures={this.state.section.lectures}  loggedUser={this.props.loggedUser}/>
+                        <LecturesList sectionId={this.state.section._id} lectures={this.state.section.lectures}  loggedUser={this.props.loggedUser}
+                             hideForm={this.toggleNewLectureForm} renderList={this.props.renderList} />
                     }
                     {
                         this.state.showClasses && this.props.loggedUser?.role === 'admin' &&
@@ -89,6 +96,11 @@ class SectionCard extends Component{
 
                 {this.state.newSectionFormIsShown && 
                 <SectionForm courseId={this.props.courseId} hideForm={this.toggleNewSectionForm} renderList={this.props.renderList}
+                    toggleShowClasses={this.toggleShowClasses}/>}
+
+                {this.state.newLectureFormIsShown && 
+                <LectureForm sectionId={this.state.section?._id} sectionNumber={this.state.section?.sectionNumber} 
+                    hideForm={this.toggleNewLectureForm} renderList={this.props.renderList}
                     toggleShowClasses={this.toggleShowClasses}/>}
 
 

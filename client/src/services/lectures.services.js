@@ -10,9 +10,9 @@ import axios from 'axios'
     }
 
     // getAllLectures = () => this.app.get('/')
-    getLectures = lectureId => this.app.get(`/${lectureId}`)
-    saveLectures = (lecture_info) => this.app.post('/new', lecture_info)
-    editLectures = (lecture_info) => this.app.put(`/edit/${lecture_info._id}`, lecture_info)
+    getLecture = lectureId => this.app.get(`/${lectureId}`)
+    saveLecture = (lecture_info) => this.app.post('/new', lecture_info)
+    editLecture = (lecture_info) => this.app.put(`/edit/${lecture_info._id}`, lecture_info)
  }
 
  export default LecturesService

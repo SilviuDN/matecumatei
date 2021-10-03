@@ -4,7 +4,7 @@ import LectureModal from './LectureModal'
 import classes from './LecturePage.module.css';
 
 
-const LectureCard = ({lecture, loggedUser}) => {
+const LectureCard = ({lecture, loggedUser, hideForm, renderList}) => {
 
 
     const [showLecture, setShowLecture] = useState(false)
@@ -37,7 +37,7 @@ const LectureCard = ({lecture, loggedUser}) => {
                             </button>                  
                         </div>
                         <div className={classes.block}>
-                            <button className="btn btn-dark">
+                            <button className="btn btn-dark" onClick={hideForm}>
                                 Adauga Lectie                     
                             </button>                  
                         </div>

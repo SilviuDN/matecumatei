@@ -16,7 +16,8 @@ const SectionsList = ({sections, loggedUser, courseId, renderList}) => {
     return(
         // <h1>LecturesList</h1>
         <>
-        {sections.map(sectionId => <SectionCard key={sectionId} courseId={courseId} sectionId = {sectionId}  loggedUser={loggedUser} renderList={renderList}/>)}
+        {sections.map(sectionId => <SectionCard key={sectionId} courseId={courseId} sectionId = {sectionId}  loggedUser={loggedUser} 
+            renderList={renderList}/>)}
         {/* {sections.map(sectionId => <SectionCard key={sectionId} courseId={courseId} sectionId = {sectionId}  loggedUser={loggedUser} renderList={renderList}/>)} */}
         
         </>
