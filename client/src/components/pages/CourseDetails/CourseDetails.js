@@ -70,6 +70,15 @@ class CourseDetails extends Component{
                         {this.state.showClasses ? 'Ascunde cuprins' : 'Arata cuprins'}                        
                     </button>
 
+                    {/* {!this.state.course.sections || (this.state.course?.sections.length === 1 && this.state.course.sections[0]==='')
+                    ?
+                    <>
+                    <p>Todavia no hay sections...</p>
+                    </>
+                    :
+                    null
+                    } */}
+
                 </Col>
 
                 <Col md={4}>
@@ -80,10 +89,20 @@ class CourseDetails extends Component{
                     {
                         // this.state.showClasses && <LecturesList courseId={this.state.course._id} lectures={this.state.course.lectures}/>
                     }
-                    {
+                    {/* {
 
                         this.state.showClasses && <SectionsList courseId={this.state.course._id} sections={this.state.course?.sections}  
                             loggedUser={this.props.loggedUser} renderList={this.renderList}/>
+                    } */}
+
+                    {!this.state.course.sections || (this.state.course?.sections.length === 1 && this.state.course.sections[0]==='')
+                    ?
+                    <p>Todavia no hay sections...</p>
+                    :
+                    this.state.showClasses && <SectionsList courseId={this.state.course._id} sections={this.state.course?.sections}  
+                        loggedUser={this.props.loggedUser} renderList={this.renderList}/>
+                    
+
                     }
 
 
