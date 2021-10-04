@@ -81,6 +81,18 @@ class SectionCard extends Component{
                         <LecturesList sectionId={this.state.section._id} lectures={this.state.section.lectures}  loggedUser={this.props.loggedUser}
                              hideForm={this.toggleNewLectureForm} renderList={this.props.renderList} />
                     }
+
+                    {
+                        this.state.showClasses && this.props.loggedUser?.role === 'admin' && this.state.section.lectures.length === 0 &&
+                        <div className={classes.block}>
+     
+                            <button className="btn btn-dark" onClick={this.toggleNewLectureForm}>
+                                Adauga Lectie                     
+                            </button>            
+                        </div>
+                    }
+
+
                     {
                         this.state.showClasses && this.props.loggedUser?.role === 'admin' &&
                         <div className={classes.block}>
