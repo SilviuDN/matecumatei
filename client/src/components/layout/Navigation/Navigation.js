@@ -16,7 +16,7 @@ const Navigation = ({ storeUser , loggedUser}) => {
 
 
     return (
-        <Navbar bg="dark" variant="dark" expand="md" style={{ marginBottom: '30px' }}>
+        <Navbar bg="dark" variant="dark" expand="md" style={{ marginBottom: '30px', position: 'fixed', top: 0, width:'100%' }}>
             <Navbar.Brand href="#home">MateCuMatei</Navbar.Brand >
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse className="justify-content-end">

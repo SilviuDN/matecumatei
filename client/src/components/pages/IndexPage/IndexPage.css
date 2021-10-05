@@ -1,0 +1,21 @@
+.bgImg {
+  /* position: relative; */
+  margin-top: 3.5em;
+  height: 100vh;
+  /* margin-top: 0; */
+}
+
+.bgImg::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./linearEqSys.jpeg");
+  background-position: top center;
+  opacity: 0.4;
+  z-index: -10;
+}
