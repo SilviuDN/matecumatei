@@ -5,7 +5,7 @@ import './IndexPage.css'
 const IndexPage = () => {
 
     return (
-        <Container className='bgImg'>
+        <Container className='bgImg' style={{marginLeft: '0px', marginRight: '0px', width:'100vw'}}>
 
             <h1>Welcome to MateCuMatei</h1>
             <p>Perseverence leads to inspiration</p>
