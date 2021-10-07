@@ -13,7 +13,7 @@ const CourseCard = ({name, description, image, _id, reviews}) => {
                 <h4>{name}</h4>
                 <p>{description.slice(0, 70)}...</p>
                 <Link to={`/courses/details/${_id}`}>
-                    <Button className="btnBlock">Detalii</Button>
+                    <Button className="btnBlock" variant="secondary">Detalii</Button>
                 </Link>
             </article>
         </Col>

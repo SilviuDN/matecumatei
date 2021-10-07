@@ -1,8 +1,11 @@
 .bgImg {
   position: relative;
   /* margin-top: 3.5em; */
-  padding-top: 3.5em;
+  /* padding-top: 3.5em; */
   height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+  z-index: -20;
 
   /* margin-top: 0; */
 }
