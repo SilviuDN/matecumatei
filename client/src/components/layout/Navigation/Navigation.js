@@ -1,5 +1,6 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import './Navigation.css'
 
 import AuthService from '../../../services/auth.services'
 
@@ -17,7 +18,9 @@ const Navigation = ({ storeUser , loggedUser}) => {
 
     return (
         <Navbar bg="dark" variant="dark" expand="md" style={{ marginBottom: '30px', position: 'fixed', top: 0, width:'100%' }}>
-            <Navbar.Brand href="#home">MateCuMatei</Navbar.Brand >
+            {/* <Link className="nav-link" to="/"> */}
+                <Navbar.Brand href="#" style={{color: 'rgba(255, 255, 255, 0.55)'}}>MateCuMatei</Navbar.Brand >
+            {/* </Link> */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse className="justify-content-end">
                 <Nav className="mr-auto">
