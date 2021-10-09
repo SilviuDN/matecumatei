@@ -11,7 +11,7 @@
 }
 
 .courseCard img {
-  /* height: 12em; */
+  height: 16rem;
   width: 100%;
   object-fit: cover;
 }
