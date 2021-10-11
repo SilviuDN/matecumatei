@@ -44,3 +44,17 @@ DB_REMOTE
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
+
+## models
+
+    Course
+    Section
+    Lecture
+    User
+
+## getting started:
+
+### locally:
+
+- server: <code>npm run dev</code>
+- client: <code>npm start</code>
