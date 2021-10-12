@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import CoursesService from '../../../services/courses.services'
+import UploadsService from '../../../services/uploads.service'
 
 const CourseForm = (props) =>  {
 
@@ -15,6 +16,7 @@ const CourseForm = (props) =>  {
     })
 
     const coursesService = new CoursesService()
+    const uploadsService = new UploadsService()
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -61,6 +63,26 @@ const CourseForm = (props) =>  {
             .catch(err => console.log(err))
     }
 
+    const handleFileUpload = e => {
+
+        // this.setState({ loading: true })
+
+        const uploadData = new FormData()
+        uploadData.append('imageData', e.target.files[0])
+
+        uploadsService
+            .uploadImage(uploadData)
+            .then(response => {
+                setCourseInput((prevCourseInput) => {
+                return { ...prevCourseInput, image: response.data.cloudinary_url }
+            } )
+                // this.setState({
+                //     loading: false,
+                //     coaster: { ...this.state.coaster, imageUrl: response.data.cloudinary_url }
+                // })
+            })
+            .catch(err => console.log(err))
+    }
 
         return (
             <Container>
@@ -97,9 +119,14 @@ const CourseForm = (props) =>  {
                         <Form.Control type="text" value={courseInput.discountedPrice} onChange={handleInputChange} name="discountedPrice" />
                     </Form.Group>
 
-                    <Form.Group controlId="lng">
+                    {/* <Form.Group controlId="lng">
                         <Form.Label>Imagen (URL)</Form.Label>
                         <Form.Control type="text" value={courseInput.image} onChange={handleInputChange} name="image" />
+                    </Form.Group> */}
+
+                    <Form.Group controlId="lng">
+                        <Form.Label>Image (file) </Form.Label>
+                        <Form.Control type="file" onChange={handleFileUpload} />
                     </Form.Group>
 
                     <Button style={{ marginTop: '20px', width: '100%' }} variant="dark" type="submit">Create course</Button>
