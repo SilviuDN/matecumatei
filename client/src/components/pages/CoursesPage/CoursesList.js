@@ -1,5 +1,6 @@
 import { Component } from "react";
 import CoursesService from "../../../services/courses.services";
+import Spinner from './../../shared/Spinner'
 
 import { Row } from 'react-bootstrap'
 import CourseCard from "./CourseCard";
@@ -29,7 +30,8 @@ class CoursesList extends Component{
 
         const coursesList = !this.state.courses
             ?
-            <h1>waiting2...</h1>
+            // <h1>waiting2...</h1>
+            <Spinner size={60}/>
             :
             <Row>
                 {this.state.courses?.map( elm => <CourseCard key = {elm._id} {...elm}/>)}

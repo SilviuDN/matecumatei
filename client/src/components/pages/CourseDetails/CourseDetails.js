@@ -1,9 +1,11 @@
 import { Component } from "react";
 import CoursesService from "../../../services/courses.services";
 import SectionsList from "../SectionPage/SectionsList";
+import Spinner from './../../shared/Spinner'
 
 import { Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
+
 
 class CourseDetails extends Component{
 
@@ -50,7 +52,8 @@ class CourseDetails extends Component{
         return(
             !this.state.course
             ?
-            <h4>waiting1...</h4>
+            // <h4>waiting1...</h4>
+            <Spinner size={60}/>
             :
             <>
             <Row className="justify-content-around">

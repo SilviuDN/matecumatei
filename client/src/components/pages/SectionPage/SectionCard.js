@@ -4,6 +4,7 @@ import LecturesList from "../LecturePage/LecturesList";
 import classes from './SectionPage.module.css';
 import SectionForm from "../SectionForm/SectionForm";
 import LectureForm from "../LectureForm/LectureForm";
+import Spinner from './../../shared/Spinner'
 
 import { Container} from 'react-bootstrap'
 
@@ -55,7 +56,8 @@ class SectionCard extends Component{
         return(
             !this.state.section
             ?
-            <h4>waiting3...</h4>
+            // <h4>waiting3...</h4>
+            <Spinner size={60}/>
             :
             <>
 
