@@ -31,7 +31,7 @@ class CoursesList extends Component{
         const coursesList = !this.state.courses
             ?
             // <h1>waiting2...</h1>
-            <Spinner size={60}/>
+            <Spinner size={200}/>
             :
             <Row>
                 {this.state.courses?.map( elm => <CourseCard key = {elm._id} {...elm}/>)}
