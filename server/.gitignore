@@ -6,3 +6,6 @@ npm-debug.log
 
 # Environment Variables should NEVER be published
 .env
+
+# To do list
+todo.md
