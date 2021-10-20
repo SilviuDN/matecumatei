@@ -17,6 +17,9 @@ src/components/pages/CourseForm/classComponents
 # production
 /build
 
+# logo
+/public/logo-MCM.png
+
 # misc
 .DS_Store
 .env.local
