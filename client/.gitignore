@@ -18,7 +18,7 @@ src/components/pages/CourseForm/classComponents
 /build
 
 # logo
-/public/logo-MCM.png
+# /public/logo-MCM.png
 
 # misc
 .DS_Store
